@@ -27,9 +27,8 @@ build() {
 	cd "$_builddir"
 	./configure --prefix=/usr \
 		--shared-zlib \
-		--shared-libuv \
 		--shared-openssl || return 1
-	make -C out BUILDTYPE=Release mksnapshot || return 1
+	make -C out mksnapshot || return 1
 	paxmark -m out/Release/mksnapshot || return 1
 	make || return 1
 }
